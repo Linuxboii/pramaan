@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pramaan - Resize photo and signature to exact size and KB</title>
+  <meta name="description" content="Resize and compress a photo or signature to the exact pixel size, file size range and DPI an application form asks for. Runs fully in your browser.">
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root { --accent: #c2410c; }
+    @media (prefers-color-scheme: dark) { :root { --accent: #fb923c; --accent-ink: #2a1003; } }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .preview { display: grid; place-items: center; background: var(--surface-2); border-radius: var(--radius); min-height: 280px; padding: 16px;
+      background-image: linear-gradient(45deg, var(--border) 25%, transparent 25%), linear-gradient(-45deg, var(--border) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--border) 75%), linear-gradient(-45deg, transparent 75%, var(--border) 75%);
+      background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+    .preview canvas { max-width: 100%; max-height: 360px; box-shadow: var(--shadow); background: #fff; }
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <h1>Pramaan</h1>
+    <p>Get a photo or signature to the exact size an application form demands: pixels, KB range and DPI. Your file never leaves this device.</p>
+  </div></header>
+  <main><div class="wrap grid-2">
+    <section class="panel stack">
+      <div class="dropzone" id="drop" tabindex="0" role="button" aria-label="Choose an image">
+        <strong>Drop an image here</strong><br>or click to choose a JPG, PNG or WebP
+      </div>
+      <input type="file" id="file" accept="image/*" hidden>
+      <label class="field">Preset<span class="hint">Always check the exact numbers on the form you are filling.</span>
+        <select id="preset">
+          <option value="413,531,20,50,300">Photo 35 x 45 mm at 300 DPI, 20 to 50 KB</option>
+          <option value="600,600,0,240,300">Square photo 600 x 600 px, up to 240 KB</option>
+          <option value="200,230,20,50,200">Small photo 200 x 230 px, 20 to 50 KB</option>
+          <option value="350,150,10,20,200">Signature 350 x 150 px, 10 to 20 KB</option>
+          <option value="140,60,0,20,200">Signature 140 x 60 px, up to 20 KB</option>
+          <option value="custom">Custom</option>
+        </select>
+      </label>
+      <div class="two">
+        <label class="field">Width (px)<input id="w" type="number" min="16" max="6000"></label>
+        <label class="field">Height (px)<input id="h" type="number" min="16" max="6000"></label>
+        <label class="field">Minimum KB<input id="minkb" type="number" min="0" step="1"></label>
+        <label class="field">Maximum KB<input id="maxkb" type="number" min="1" step="1"></label>
+      </div>
+      <label class="field">DPI written to the file<input id="dpi" type="number" min="72" max="1200"></label>
+      <label class="field">Zoom<input id="zoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+      <div class="two">
+        <label class="field">Horizontal position<input id="fx" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+        <label class="field">Vertical position<input id="fy" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+      </div>
+      <label class="row small"><input type="checkbox" id="whiten"> Whiten paper background (for signatures shot on a phone)</label>
+    </section>
+    <section class="panel stack" aria-live="polite">
+      <div class="preview" id="preview"><p class="empty" id="empty">Your result shows up here.</p></div>
+      <div class="stats">
+        <div class="stat"><b id="dims">-</b><span>Pixels</span></div>
+        <div class="stat"><b id="size">-</b><span>File size</span></div>
+        <div class="stat"><b id="q">-</b><span>JPEG quality</span></div>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="row"><button class="primary" id="dl" disabled>Download JPG</button></div>
+    </section>
+  </div></main>
+  <footer class="bottom"><div class="wrap">
+    <span>Pramaan. Free and open source.</span>
+    <span><a href="https://github.com/Linuxboii/pramaan">Source</a> &nbsp; <a href="https://sushanth.avlokai.com">Made by Sushanth Kasturi</a></span>
+  </div></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
