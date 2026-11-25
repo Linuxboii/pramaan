@@ -16,6 +16,16 @@ Resize a photo or signature to the exact size a form asks for.
 
 Nothing is uploaded. The image is processed on a canvas in your browser.
 
+## Demand
+
+About 28 lakh (2.8 million) people applied for SSC CGL 2025 alone, and each application needs a photo of 20 to 50 KB and a signature of 10 to 20 KB.
+
+- [Careers360: SSC CGL 2025, 28 lakh registrations](https://news.careers360.com/ssc-cgl-2025-tier-1-93-percent-candidates-allotted-exam-centres-first-second-or-third-choice-city-slip-28-lakh-registrations)
+- [Career Power: 28 lakh applied](https://www.careerpower.in/blog/28-lakhs-candidates-applied-for-ssc-cgl-2025-exam)
+- [DocSet: SSC photo and signature size rules](https://docset.in/blog/ssc-cgl-photo-size-2026-guide)
+
+These figures measure demand for the task, from existing tools. They are third-party estimates or company claims, not usage of this tool.
+
 ## Privacy
 
 Everything runs in your browser. There is no backend, no analytics and no account. Nothing you enter is uploaded.
